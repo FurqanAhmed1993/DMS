@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{90659757-6527-4A3F-A5BC-45F6114C033C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DMS_BAL</RootNamespace>
+    <AssemblyName>DMS_BAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus">
+      <HintPath>..\Sanofi\Bin\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BAL_ActivityLog.cs" />
+    <Compile Include="BAL_Application.cs" />
+    <Compile Include="BAL_Dashboard.cs" />
+    <Compile Include="BAL_DeliveryDateDays.cs" />
+    <Compile Include="BAL_DeputyCommissioner.cs" />
+    <Compile Include="BAL_DomicileText.cs" />
+    <Compile Include="BAL_DuplicateDocumentsRecord.cs" />
+    <Compile Include="BAL_Guardian.cs" />
+    <Compile Include="BAL_IssuanceRegister.cs" />
+    <Compile Include="BAL_IssuedDocumentsRecord.cs" />
+    <Compile Include="BAL_Setup_Feature.cs" />
+    <Compile Include="BAL_Taluka.cs" />
+    <Compile Include="BAL_Login.cs" />
+    <Compile Include="BAL_Role.cs" />
+    <Compile Include="BAL_Setup_MasterDetail.cs" />
+    <Compile Include="BAL_Setup_MenuItem.cs" />
+    <Compile Include="BAL_User.cs" />
+    <Compile Include="BAL_Deh.cs" />
+    <Compile Include="BAL_UserPasswordHistory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DMS_DAL\DMS_DAL.csproj">
+      <Project>{6e0b3e5a-6edb-4205-8352-f537703b70cd}</Project>
+      <Name>DMS_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DMS_Utilities\DMS_Utilities.csproj">
+      <Project>{1407d8c5-3434-49e7-9a9b-78b533445165}</Project>
+      <Name>DMS_Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DMS_DAL\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

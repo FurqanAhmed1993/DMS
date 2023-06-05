@@ -1,0 +1,268 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMaster.master.cs" Inherits="MasterPage_AdminMaster" %>
+
+<%@ Register Src="~/CustomControls/Menu.ascx" TagPrefix="uc" TagName="Menu" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>District Management System - DMS</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!-- Favicon -->
+
+    <!-- Data table CSS -->
+
+    <link href="/Assets/vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <!-- Toast CSS -->
+    <link href="/Assets/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css" />
+    <!-- Morris Charts CSS -->
+    <link href="/Assets/vendors/bower_components/morris.js/morris.css" rel="stylesheet" type="text/css" />
+    <!-- Chartist CSS -->
+    <link href="/Assets/vendors/bower_components/chartist/dist/chartist.min.css" rel="stylesheet" type="text/css" />
+    <!-- vector map CSS -->
+    <link href="/Assets/vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css" />
+    <!-- Sweet Alert CSS -->
+    <link href="/Assets/vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css" />
+
+    <!-- DatePicker CSS -->
+    <link href="/Assets/vendors/bower_components/datapicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/dist/css/fancy-buttons.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/vendors/bower_components/switchery/dist/switchery.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/dist/css/style.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .modal {
+            overflow-y: auto !important;
+        }
+
+        .panel-heading {
+            background: #525ca3;
+            color: white;
+        }
+    </style>
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="scriptManager1" runat="server" AsyncPostBackTimeout="3600" />
+
+        <!-- Preloader -->
+
+        <div id="loader-wrapper">
+            <div id="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
+
+        <!-- /Preloader -->
+        <div class="wrapper theme-1-active navbar-top-navy">
+            <!-- Top Menu Items -->
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="nav-wrap">
+                    <div class="mobile-only-brand pull-left">
+                        <div class="nav-header pull-left">
+                            <div class="logo-wrap">
+                                <a>
+                                    <%--<img class="brand-img" src="/Assets/img/MDL2.png" alt="brand" style="height:60px" />--%>
+                                    <span class="brand-text">
+                                        <%--<img src="/Assets/img/MDL2.png" alt="brand" style="height:60px" /></span>--%>
+                                </a>
+                            </div>
+                        </div>
+                        <a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);"><i class="ti-align-left"></i></a>
+                        <a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="ti-more"></i></a>
+                    </div>
+                    <div id="mobile_only_nav" class="mobile-only-nav pull-right">
+                        <ul class="nav navbar-right top-nav pull-right">
+                            <li class="dropdown alert-drp"></li>
+                            <li class="dropdown auth-drp">
+                                <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown">
+                                    <span class="user-auth-name inline-block">
+                                        <asp:Label ID="lblLoginStatus" runat="server"></asp:Label>
+                                        <span class="ti-angle-down"></span>
+                                    </span>
+                                    <%--<img src="/Assets/img/user1.png" alt="user_auth" class="user-auth-img img-circle" />
+                                    <span class="user-online-status"></span>--%>
+                                </a>
+                                <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="slideInRight" data-dropdown-out="flipOutX">
+                                    <li><a href="/Pages/ChangePassword.aspx"><i class="zmdi zmdi-edit"></i><span>Change Password</span></a></li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <asp:LinkButton runat="server" ID="lbLogout" OnClick="lbLogout_Click"><i class="zmdi zmdi-power"></i><span>Log Out</span></asp:LinkButton>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- /Top Menu Items -->
+
+            <!-- Left Sidebar Menu -->
+            <div class="fixed-sidebar-left">
+                <ul class="nav navbar-nav side-nav nicescroll-bar">
+                    <li class="navigation-header"></li>
+                    <uc:Menu runat="server" ID="Menu" />
+                </ul>
+            </div>
+            <!-- /Left Sidebar Menu -->
+
+            <!-- Main Content -->
+            <div class="page-wrapper">
+                <div class="container-fluid">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+
+                <!-- Footer -->
+                <footer class="footer pl-30 pr-30">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8 text-right">
+                                <p>
+                                    <strong>Copyright © <span>
+                                        <asp:Label runat="server" ID="lblYear"></asp:Label></span> Sybrid Pvt Ltd.  
+                                    </strong>
+                                </p>
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <p title="for support email at sdg@sybrid.com">
+                                    <a href="mailto:sdg@sybrid.com"><i class="fa fa-envelope"></i> &nbsp sdg@sybrid.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- /Footer -->
+
+            </div>
+            <!-- /Main Content -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- JavaScript -->
+
+        <!-- jQuery -->
+        <script src="/Assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/Assets/dist/js/jquerynumeric.js"></script>
+
+        <!-- SweetAlert JavaScript -->
+        <script src="/Assets/vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
+        <!-- Datepicker JavaScript -->
+        <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/Assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+
+        <!-- Datepicker JavaScript -->
+        <script src="/Assets/dist/js/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js"></script>
+
+        <!-- Data table JavaScript -->
+        <script src="/Assets/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+        <%--        <script src="/Assets/dist/js/dataTables-data.js"></script>--%>
+        <%--<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>--%>
+
+        <!-- Slimscroll JavaScript -->
+        <script src="/Assets/dist/js/jquery.slimscroll.js"></script>
+
+        <!-- Progressbar Animation JavaScript -->
+        <script src="/Assets/vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+        <script src="/Assets/vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
+
+        <!-- Fancy Dropdown JS -->
+        <script src="/Assets/dist/js/dropdown-bootstrap-extended.js"></script>
+
+        <!-- Sparkline JavaScript -->
+        <script src="/Assets/vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
+
+        <!-- Owl JavaScript -->
+        <%--   <script src="/Assets/vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>--%>
+
+        <!-- Switchery JavaScript -->
+        <script src="/Assets/vendors/bower_components/switchery/dist/switchery.min.js"></script>
+
+        <!-- Vector Maps JavaScript -->
+        <script src="/Assets/vendors/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+        <script src="/Assets/vendors/vectormap/jquery-jvectormap-us-aea-en.js"></script>
+        <script src="/Assets/vendors/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="/Assets/dist/js/vectormap-data.js"></script>
+
+        <!-- Toast JavaScript -->
+        <script src="/Assets/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
+        <!-- Piety JavaScript -->
+        <script src="/Assets/vendors/bower_components/peity/jquery.peity.min.js"></script>
+        <script src="/Assets/dist/js/peity-data.js"></script>
+
+        <!-- Chartist JavaScript -->
+        <script src="/Assets/vendors/bower_components/chartist/dist/chartist.min.js"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script src="/Assets/vendors/bower_components/raphael/raphael.min.js"></script>
+        <script src="/Assets/vendors/bower_components/morris.js/morris.min.js"></script>
+        <script src="/Assets/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
+
+        <%--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--%>
+
+
+        <!-- ChartJS JavaScript -->
+        <script src="/Assets/vendors/chart.js/Chart.min.js"></script>
+
+        <!-- Init JavaScript -->
+        <script src="/Assets/dist/js/init.js"></script>
+        <script src="/Assets/dist/js/dashboard-data.js"></script>
+
+        <!-- Add fancyBox main JS and CSS files -->
+        <script type="text/javascript" src="/Assets/Fancy/source/jquery.fancybox.js"></script>
+        <link rel="stylesheet" type="text/css" href="/Assets/Fancy/source/jquery.fancybox.css" media="screen" />
+
+        <!-- Add Button helper (this is optional) -->
+        <link rel="stylesheet" type="text/css" href="/Assets/Fancy/source/helpers/jquery.fancybox-buttons.css" />
+        <script type="text/javascript" src="/Assets/Fancy/source/helpers/jquery.fancybox-buttons.js"></script>
+
+        <!-- Add Thumbnail helper (this is optional) -->
+        <link rel="stylesheet" type="text/css" href="/Assets/Fancy/source/helpers/jquery.fancybox-thumbs.css" />
+        <script type="text/javascript" src="/Assets/Fancy/source/helpers/jquery.fancybox-thumbs.js"></script>
+
+        <!-- Add Media helper (this is optional) -->
+        <script type="text/javascript" src="/Assets/Fancy/source/helpers/jquery.fancybox-media.js"></script>
+
+        <link href="/Assets/dist/js/select2/select2.min.css" rel="stylesheet" />
+        <script src="/Assets/dist/js/select2/select2.min.js"></script>
+
+        <link href="/Assets/datetimepicker-master/jquery.datetimepicker.css" rel="stylesheet" />
+        <script src="/Assets/datetimepicker-master/jquery.datetimepicker.js"></script>
+
+        <script src="/Assets/dist/js/jquery.mask.min.js"></script>
+        <script src="/Assets/dist/js/accounting.min.js"></script>
+
+
+    </form>
+
+
+</body>
+</html>
+

@@ -1,0 +1,170 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMasterBlank.master.cs" Inherits="MasterPage_AdminMasterBlank" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+     <title>McDonald’s - CMS</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <%--<link rel="shortcut icon" href="/favicon.ico" />--%>
+    <%--<link rel="icon" href="/favicon.ico" type="image/x-icon" />--%>
+    <link href="/Assets/vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/vendors/bower_components/morris.js/morris.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/vendors/bower_components/chartist/dist/chartist.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/vendors/bower_components/datapicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/dist/css/fancy-buttons.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/vendors/bower_components/switchery/dist/switchery.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/dist/css/style.css" rel="stylesheet" type="text/css" />
+    <style>
+        .modal { overflow-y: auto !important; }
+
+        .panel-heading {
+            background: #525ca3;
+            color: white;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="scriptManager1" runat="server" AsyncPostBackTimeout="3600" />
+        <!-- Preloader -->
+
+        <div id="loader-wrapper">
+            <div id="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
+
+        <!-- /Preloader -->
+        <div class="wrapper theme-1-active navbar-top-navy">
+            <!-- Main Content -->
+            <div class="page-wrapper">
+                <div class="container-fluid">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <!-- /Main Content -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- JavaScript -->
+
+        <!-- jQuery -->
+        <script src="/Assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/Assets/dist/js/jquerynumeric.js"></script>
+
+        <!-- SweetAlert JavaScript -->
+        <script src="/Assets/vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
+        <!-- Datepicker JavaScript -->
+        <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/Assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+
+        <!-- Datepicker JavaScript -->
+        <script src="/Assets/dist/js/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js"></script>
+
+        <!-- Data table JavaScript -->
+        <script src="/Assets/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+        <%--        <script src="/Assets/dist/js/dataTables-data.js"></script>--%>
+        <%--<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>--%>
+
+        <!-- Slimscroll JavaScript -->
+        <script src="/Assets/dist/js/jquery.slimscroll.js"></script>
+
+        <!-- Progressbar Animation JavaScript -->
+        <script src="/Assets/vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+        <script src="/Assets/vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
+
+        <!-- Fancy Dropdown JS -->
+        <script src="/Assets/dist/js/dropdown-bootstrap-extended.js"></script>
+
+        <!-- Sparkline JavaScript -->
+        <script src="/Assets/vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
+
+        <!-- Owl JavaScript -->
+        <%--<script src="/Assets/vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>--%>
+
+        <!-- Switchery JavaScript -->
+        <script src="/Assets/vendors/bower_components/switchery/dist/switchery.min.js"></script>
+
+        <!-- Vector Maps JavaScript -->
+        <script src="/Assets/vendors/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+        <script src="/Assets/vendors/vectormap/jquery-jvectormap-us-aea-en.js"></script>
+        <script src="/Assets/vendors/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="/Assets/dist/js/vectormap-data.js"></script>
+
+        <!-- Toast JavaScript -->
+        <script src="/Assets/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
+        <!-- Piety JavaScript -->
+        <script src="/Assets/vendors/bower_components/peity/jquery.peity.min.js"></script>
+        <script src="/Assets/dist/js/peity-data.js"></script>
+
+        <!-- Chartist JavaScript -->
+        <script src="/Assets/vendors/bower_components/chartist/dist/chartist.min.js"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script src="/Assets/vendors/bower_components/raphael/raphael.min.js"></script>
+        <script src="/Assets/vendors/bower_components/morris.js/morris.min.js"></script>
+        <script src="/Assets/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
+
+        <%--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--%>
+
+
+        <!-- ChartJS JavaScript -->
+        <script src="/Assets/vendors/chart.js/Chart.min.js"></script>
+
+        <!-- Init JavaScript -->
+        <script src="/Assets/dist/js/init.js"></script>
+        <script src="/Assets/dist/js/dashboard-data.js"></script>
+
+        <!-- Add fancyBox main JS and CSS files -->
+        <script type="text/javascript" src="/Assets/Fancy/source/jquery.fancybox.js"></script>
+        <link rel="stylesheet" type="text/css" href="/Assets/Fancy/source/jquery.fancybox.css" media="screen" />
+
+        <!-- Add Button helper (this is optional) -->
+        <link rel="stylesheet" type="text/css" href="/Assets/Fancy/source/helpers/jquery.fancybox-buttons.css" />
+        <script type="text/javascript" src="/Assets/Fancy/source/helpers/jquery.fancybox-buttons.js"></script>
+
+        <!-- Add Thumbnail helper (this is optional) -->
+        <link rel="stylesheet" type="text/css" href="/Assets/Fancy/source/helpers/jquery.fancybox-thumbs.css" />
+        <script type="text/javascript" src="/Assets/Fancy/source/helpers/jquery.fancybox-thumbs.js"></script>
+
+        <!-- Add Media helper (this is optional) -->
+        <script type="text/javascript" src="/Assets/Fancy/source/helpers/jquery.fancybox-media.js"></script>
+
+        <link href="/Assets/dist/js/select2/select2.min.css" rel="stylesheet" />
+        <script src="/Assets/dist/js/select2/select2.min.js"></script>
+
+                <script src="/Assets/dist/js/jquery.mask.min.js"></script>
+        <script src="/Assets/dist/js/accounting.min.js"></script>
+
+
+    </form>
+</body>
+</html>
